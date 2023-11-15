@@ -727,11 +727,6 @@
                 </div>
             </div>
             <div class="container padding-bottom-90px relative tablet_padding-bottom-0px">
-                <div class="w-embed w-script">
-                    <script src="Resources/Javascripts/jquery-3.6.1.min.js"
-                        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
-                        crossorigin="anonymous"></script>
-                </div>
                 <div data-w-id="ad203063-f238-9c54-a413-d3d402162584"
                     class="swiper swiper_eco w-dyn-list swiper-initialized swiper-horizontal swiper-free-mode swiper-backface-hidden">
                     <div role="list" class="swiper-wrapper swiper-wrapper_eco w-dyn-items"
@@ -847,31 +842,66 @@
                 </div>
             </div>
         </section>
+        <section id="airdrop" data-w-id="75860367-17ec-d3bc-6d69-ba2b73b8e06f" class="section section__airdrop">
+            <div class="container tablet_margin">
+                <div class="paragraph-medium small-heading">Airdrop</div>
+                <h2>Airdrop <font color="yellow">10 USD</font> every day on Twitter.</h2> 
+                <h4>End on January 1, 2024: <br><br></h4>
+                <div class="layout_disclaimer">
+                    <div  class="layout_faq">
+                        <div class="layout_faq">
+                            <h1 id="days" class="interest-wrapper" style="background-color: rgba(255, 255, 255, 0.06);"></h1>
+                            <h1 id="hours" class="interest-wrapper" style="background-color: rgba(255, 255, 255, 0.06);"></h1>     
+                        </div>
+                        <div class="layout_faq">
+                            <h1 id="minutes" class="interest-wrapper" style="background-color: rgba(255, 255, 255, 0.06);"></h1>
+                            <h1 id="seconds" class="interest-wrapper" style="background-color: rgba(255, 255, 255, 0.06);"></h1>
+                        </div>
+                    </div>      
+                        <script>
+                            // Set the date we're counting down to
+                            var countDownDate = new Date("Jan 1, 2024 00:00:00").getTime();
+        
+                            // Update the count down every 1 second
+                            var x = setInterval(function() {
+        
+                            // Get today's date and time+
+                            var now = new Date().getTime();
+                                
+                            // Find the distance between now and the count down date
+                            var distance = countDownDate - now;
+                                
+                            // Time calculations for days, hours, minutes and seconds
+                            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                                
+                            // Output the result in an element with id="demo"
+                            document.getElementById("days").innerHTML = days + "d ";
+                            document.getElementById("hours").innerHTML = hours + "h ";
+                            document.getElementById("minutes").innerHTML =  minutes + "m ";
+                            document.getElementById("seconds").innerHTML = seconds + "s ";
+                                
+                            // If the count down is over, write some text 
+                            if (distance < 0) {
+                                clearInterval(x);
+                                document.getElementById("day").innerHTML = "--";
+                                document.getElementById("hours").innerHTML = "--";
+                                document.getElementById("minutes").innerHTML = "--";
+                                document.getElementById("seconds").innerHTML = "--";
+                            }
+                            }, 1000);
+                            </script>
+                </div>
+            </div>
+        </div>
+        </section>
         <section id="community" data-w-id="75860367-17ec-d3bc-6d69-ba2b73b8e06f" class="section section__comunity">
             <div class="container margin-bottom-60px tablet_margin">
                 <div class="paragraph-medium small-heading">Community</div>
                 <div class="layout_2-grid">
                     <h2>Join the Idle 2 Earn</h2>
-                    <div id="w-node-_95bff2c9-0ba2-beeb-b042-82ed34891f7c-4b2dfe8f" class="section-desc-wrapper">
-                        <div class="section-desc">
-                            <div class="section-desc_emoji">👋</div>
-                            <p class="section-desc_paragraph">Join the most welcoming and active crypto community in the
-                                world.</p>
-                        </div>
-                        <div class="tag section-desc_open">
-                            <div>Read</div>
-                        </div>
-                        <div data-w-id="95bff2c9-0ba2-beeb-b042-82ed34891f85" class="tag section-desc_close">
-                            <div>Hide</div>
-                        </div>
-                        <div data-w-id="95bff2c9-0ba2-beeb-b042-82ed34891f88" class="section-desc_open"
-                            style="display: block;">
-                        </div>
-                        <div data-w-id="95bff2c9-0ba2-beeb-b042-82ed34891f89" class="section-desc_bottom"
-                            style="height: 0px;">
-                            <div target="_blank" class="lightbox_rich-text w-richtext"></div>
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="container padding-bottom-90px relative tablet_padding-bottom-0px">
