@@ -9,7 +9,7 @@ fetch(FULL_URL)
 .then(res => res.text())
 .then(rep => {
     let sheet = JSON.parse(rep.substr(47).slice(0,-2));
-    console.log("json: " + "%j" + rep);
+    // console.log("json: " + "%j" + rep);
     let length = sheet.table.rows.length;
     for(let i = 0; i<length;i++){
         if (sheet.table.rows[i].c[0]==null
@@ -39,15 +39,8 @@ let renderTable = function (arr) {
         <td>${item.time}</td>
         </tr>
         `
-
-        // <tr>
-        //     <th scope="row">${index + 1}</th>
-        //     <td><a href="${item.address}" target="_blank">${item.address}</a></td>
-        //     <td>${item.address}</td>
-        //     <td><a href="${item.address}" target="_blank"button class="btn btn-info">Dowload</button></td>
-        // </tr>
     })
-    console.log(html);
+    // console.log(html);
     $('#table_body').append(html);
 }
 

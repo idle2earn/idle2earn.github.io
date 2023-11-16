@@ -244,6 +244,7 @@
             display: none;
         }
     </style>
+    <link rel="stylesheet" href="/Resources/Javascripts/table.css">
 </head>
 
 <body>
@@ -639,6 +640,7 @@
                 <div class="nav_wrapper">
                     <a href="#ecosystem" class="nav_link">Games</a>
                     <a href="#airdrop" class="nav_link">Airdrop</a>
+                    <a href="#public_sale" class="nav_link">Public Sale</a>
                     <a href="#buy" class="nav_link">Tokenomics</a>
                     <a href="#community"class="nav_link">Community</a> 
                     <a href="#timeline" class="nav_link">Roadmap</a>
@@ -891,9 +893,20 @@
                             </script>
                             <!-- <iframe src="https://poocoin.app/" width="1000" height="400"></iframe> -->
                 </div>
-                <h4><br>Buyers:</h4>
+            </div>
+        </div>
+        </section>
+        <section id="public_sale" data-w-id="" class="section section__public_sale">
+            <div class="container tablet_margin">
+                <div class="paragraph-medium small-heading">Public Sale</div>
+                <h2>Buy <font color="yellow">1000 I2E </font> just 1 USDT.</h2>
+                <h5>IDO price: 0.01 USDT/I2E</h5>
+                <h5>Send USDT to Address: 0x68B2BC56241f3aDa195b3a3A629ab8198007b129</h5> 
+                <h5>Funding (0%): 0 /100.000 USDT</h5> 
+                <h4><br>Buyers List:</h4>
                 <h5>Update per hour</h5>
-                <div class="">
+                <div id="table-wrapper">
+                    <div id="table-scroll">
                     <table>
                         <thead>
                             <tr>
@@ -907,9 +920,9 @@
                         </tbody>
                     </table>
                     </div>
+                    </div>
                 </div>
-            </div>
-        </div>
+        </section>
         </section>
         <section id="buy" data-w-id="5c93e06d-7ac0-16c6-18b4-e427b2873b2e" class="section section_buy">
             <!-- <div datbuy_swiper-swrappera-w-id="5c93e06d-7ac0-16c6-18b4-e427b2873b2f" class="container container_buy_v2">
@@ -1069,35 +1082,26 @@
             </div> -->
             <div class="container margin-bottom-90px">
                 <h2 class="margin-bottom-15px margin-top-30px">Tokenomics<br><br> </h2>              
-                <div id="piechart"></div>
-                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
-                <script type="text/javascript">
-                // Load google charts
-                google.charts.load('current', {'packages':['corechart']});
-                google.charts.setOnLoadCallback(drawChart);
-
-                // Draw the chart and set the chart values
-                function drawChart() {
-                var data = google.visualization.arrayToDataTable([
-                ['Task', 'Hours per Day'],
-                ['Comunity', 60],
-                ['Marketing', 20],
-                ['Airdrop', 10],
-                ['ICO - Public Sale', 5],
-                ['Team', 5]
-                ]);
-
-                // Optional; add a title and set the width and height of the chart
-                var options = {'title':'My Average Day', 'width':550, 'height':400};
-
-                // Display the chart inside the <div> element with id="piechart"
-                var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-                chart.draw(data, options);
-                }
-                </script>
                 
                 <div class="layout_2-grid tablet_reverse">
+                    <!-- <div id="w-node-d49174e2-8b39-d09a-993e-103b539f8d32-4b2dfe8f"
+                        class="flex-column-center mobile_width-100">
+                        <h3 class="margin-bottom-15px margin-top-30px">Powered by BSC</h3>
+                        <p class="margin-bottom-30px">I2E&nbsp;contract addresses<br><br>BSC:
+                            contract</p>
+                        <div class="button-wrapper left">
+                            <a href="https://bscscan.com/token/"
+                                target="_blank" class="button w-inline-block">
+                                <div>BscScan (BSC)</div>
+                                <div class="embed_16px w-embed"><svg loading="eager" fill="CurrentColor"
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="16px"
+                                        height="16px">
+                                        <path
+                                            d="M 40.960938 4.9804688 A 2.0002 2.0002 0 0 0 40.740234 5 L 28 5 A 2.0002 2.0002 0 1 0 28 9 L 36.171875 9 L 22.585938 22.585938 A 2.0002 2.0002 0 1 0 25.414062 25.414062 L 39 11.828125 L 39 20 A 2.0002 2.0002 0 1 0 43 20 L 43 7.2460938 A 2.0002 2.0002 0 0 0 40.960938 4.9804688 z M 12.5 8 C 8.3826878 8 5 11.382688 5 15.5 L 5 35.5 C 5 39.617312 8.3826878 43 12.5 43 L 32.5 43 C 36.617312 43 40 39.617312 40 35.5 L 40 26 A 2.0002 2.0002 0 1 0 36 26 L 36 35.5 C 36 37.446688 34.446688 39 32.5 39 L 12.5 39 C 10.553312 39 9 37.446688 9 35.5 L 9 15.5 C 9 13.553312 10.553312 12 12.5 12 L 22 12 A 2.0002 2.0002 0 1 0 22 8 L 12.5 8 z">
+                                        </path>
+                                    </svg></div>
+                            </a></div>
+                    </div>          -->
                     <div id="w-node-_4ac8d1c6-056c-6a0e-efdf-15f54ab0fb4a-4b2dfe8f"
                         class="flex-column-center mobile_width-100">                    
                         <div class="list_wrapper">
@@ -1115,24 +1119,9 @@
                             </div>
                         </div>
                     </div>
-                    <div id="w-node-d49174e2-8b39-d09a-993e-103b539f8d32-4b2dfe8f"
-                        class="flex-column-center mobile_width-100">
-                        <h3 class="margin-bottom-15px margin-top-30px">Powered by BSC</h3>
-                        <p class="margin-bottom-30px">I2E&nbsp;contract addresses<br><br>BSC:
-                            contract</p>
-                        <div class="button-wrapper left">
-                            <a href="https://bscscan.com/token/"
-                                target="_blank" class="button w-inline-block">
-                                <div>BscScan (BSC)</div>
-                                <div class="embed_16px w-embed"><svg loading="eager" fill="CurrentColor"
-                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="16px"
-                                        height="16px">
-                                        <path
-                                            d="M 40.960938 4.9804688 A 2.0002 2.0002 0 0 0 40.740234 5 L 28 5 A 2.0002 2.0002 0 1 0 28 9 L 36.171875 9 L 22.585938 22.585938 A 2.0002 2.0002 0 1 0 25.414062 25.414062 L 39 11.828125 L 39 20 A 2.0002 2.0002 0 1 0 43 20 L 43 7.2460938 A 2.0002 2.0002 0 0 0 40.960938 4.9804688 z M 12.5 8 C 8.3826878 8 5 11.382688 5 15.5 L 5 35.5 C 5 39.617312 8.3826878 43 12.5 43 L 32.5 43 C 36.617312 43 40 39.617312 40 35.5 L 40 26 A 2.0002 2.0002 0 1 0 36 26 L 36 35.5 C 36 37.446688 34.446688 39 32.5 39 L 12.5 39 C 10.553312 39 9 37.446688 9 35.5 L 9 15.5 C 9 13.553312 10.553312 12 12.5 12 L 22 12 A 2.0002 2.0002 0 1 0 22 8 L 12.5 8 z">
-                                        </path>
-                                    </svg></div>
-                            </a></div>
-                    </div>
+                    <div>
+                        <img src="Resources/Images/chart.png" alt="Pie Chart">
+                    </div> 
                 </div>
             </div>
         </section>
@@ -2073,23 +2062,6 @@
         };
 
     </script>
-    <style>
-    table {
-    border-spacing: 0;
-    border-collapse: collapse;
-    width: 100%;
-    }
-
-    td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-    }
-
-    tr:nth-child(even) {
-    background-color: #131313;
-    }
-    </style>
     <script src="/Resources/Javascripts/googlesheet.js"></script>
 </body>
 

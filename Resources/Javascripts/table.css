@@ -1,0 +1,18 @@
+#table-wrapper {
+    position:relative;
+  }
+  #table-scroll {
+    height:300px;
+    overflow:auto;  
+    margin-top:20px;
+  }
+  #table-wrapper table {
+    width:100%;     
+  }
+  #table-wrapper table * {
+    background:rgb(15, 15, 15);
+    color:#dddddd;
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
