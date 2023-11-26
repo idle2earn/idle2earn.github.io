@@ -639,9 +639,9 @@
                 </a>
                 <div class="nav_wrapper">
                     <a href="#ecosystem" class="nav_link">Games</a>
+                    <a href="#buy" class="nav_link">Tokenomics</a>
                     <a href="#airdrop" class="nav_link">Airdrop</a>
                     <a href="#presale" class="nav_link">PreSale</a>
-                    <a href="#buy" class="nav_link">Tokenomics</a>
                     <a href="#community"class="nav_link">Community</a> 
                     <a href="#timeline" class="nav_link">Roadmap</a>
                 </div>
@@ -839,90 +839,6 @@
                     </div>
                 </div>
             </div>
-        </section>
-        <section id="airdrop" data-w-id="75860367-17ec-d3bc-6d69-ba2b73b8e06f" class="section section__airdrop">
-            <div class="container tablet_margin">
-                <div class="paragraph-medium small-heading">Airdrop</div>
-                <h2>Airdrop <font color="yellow">100 USD</font> every day on Twitter.</h2> 
-                <h4>End on January 1, 2024: <br><br></h4>
-                <div class="layout_disclaimer">
-                    <div  class="layout_faq">
-                        <div class="layout_faq">
-                            <h1 id="days" class="interest-wrapper" style="background-color: rgba(255, 255, 255, 0.06);"></h1>
-                            <h1 id="hours" class="interest-wrapper" style="background-color: rgba(255, 255, 255, 0.06);"></h1>     
-                        </div>
-                        <div class="layout_faq">
-                            <h1 id="minutes" class="interest-wrapper" style="background-color: rgba(255, 255, 255, 0.06);"></h1>
-                            <h1 id="seconds" class="interest-wrapper" style="background-color: rgba(255, 255, 255, 0.06);"></h1>
-                        </div>
-                    </div>      
-                        <script>
-                            // Set the date we're counting down to
-                            var countDownDate = new Date("Jan 1, 2024 00:00:00").getTime();
-        
-                            // Update the count down every 1 second
-                            var x = setInterval(function() {
-        
-                            // Get today's date and time+
-                            var now = new Date().getTime();
-                                
-                            // Find the distance between now and the count down date
-                            var distance = countDownDate - now;
-                                
-                            // Time calculations for days, hours, minutes and seconds
-                            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                                
-                            // Output the result in an element with id="demo"
-                            document.getElementById("days").innerHTML = days + "d ";
-                            document.getElementById("hours").innerHTML = hours + "h ";
-                            document.getElementById("minutes").innerHTML =  minutes + "m ";
-                            document.getElementById("seconds").innerHTML = seconds + "s ";
-                                
-                            // If the count down is over, write some text 
-                            if (distance < 0) {
-                                clearInterval(x);
-                                document.getElementById("day").innerHTML = "--";
-                                document.getElementById("hours").innerHTML = "--";
-                                document.getElementById("minutes").innerHTML = "--";
-                                document.getElementById("seconds").innerHTML = "--";
-                            }
-                            }, 1000);
-                            </script>
-                            <!-- <iframe src="https://poocoin.app/" width="1000" height="400"></iframe> -->
-                </div>
-            </div>
-        </div>
-        </section>
-        <section id="presale" data-w-id="" class="section section__presale">
-            <div class="container tablet_margin">
-                <div class="paragraph-medium small-heading">PreSale</div>
-                <h2>Buy <font color="yellow">1000 I2E </font> just 1 USDT.</h2>
-                <h5>IDO price: 0.01 USDT/I2E</h5>
-                <h5>BSC chain: Send USDT to Address: 0x68B2BC56241f3aDa195b3a3A629ab8198007b129</h5> 
-                <h5>Funding (0%): 0 /100.000 USDT</h5> 
-                <h4><br>Buyers List:</h4>
-                <h5>Update per hour</h5>
-                <div id="table-wrapper">
-                    <div id="table-scroll">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th scope="col">Address</th>
-                                <th scope="col">From USDT</th>
-                                <th scope="col">To I2E</th>
-                                <th scope="col">Date</th>
-                            </tr>
-                        </thead>
-                        <tbody id="table_body">
-                        </tbody>
-                    </table>
-                    </div>
-                    </div>
-                </div>
-        </section>
         </section>
         <section id="buy" data-w-id="5c93e06d-7ac0-16c6-18b4-e427b2873b2e" class="section section_buy">
             <!-- <div datbuy_swiper-swrappera-w-id="5c93e06d-7ac0-16c6-18b4-e427b2873b2f" class="container container_buy_v2">
@@ -1124,6 +1040,111 @@
                     </div> 
                 </div>
             </div>
+        </section>
+        <section id="airdrop" data-w-id="75860367-17ec-d3bc-6d69-ba2b73b8e06f" class="section section__airdrop">
+            <div class="container tablet_margin">
+                <div class="paragraph-medium small-heading">Airdrop</div>
+                <h2>Airdrop <font color="yellow">100 USD</font> every day on Twitter.</h2> 
+                <h4>End on January 1, 2024: <br><br></h4>
+                <div class="layout_disclaimer">
+                    <div  class="layout_faq">
+                        <div class="layout_faq">
+                            <h1 id="days" class="interest-wrapper" style="background-color: rgba(255, 255, 255, 0.06);"></h1>
+                            <h1 id="hours" class="interest-wrapper" style="background-color: rgba(255, 255, 255, 0.06);"></h1>     
+                        </div>
+                        <div class="layout_faq">
+                            <h1 id="minutes" class="interest-wrapper" style="background-color: rgba(255, 255, 255, 0.06);"></h1>
+                            <h1 id="seconds" class="interest-wrapper" style="background-color: rgba(255, 255, 255, 0.06);"></h1>
+                        </div>
+                    </div>      
+                        <script>
+                            // Set the date we're counting down to
+                            var countDownDate = new Date("Jan 1, 2024 00:00:00").getTime();
+        
+                            // Update the count down every 1 second
+                            var x = setInterval(function() {
+        
+                            // Get today's date and time+
+                            var now = new Date().getTime();
+                                
+                            // Find the distance between now and the count down date
+                            var distance = countDownDate - now;
+                                
+                            // Time calculations for days, hours, minutes and seconds
+                            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                                
+                            // Output the result in an element with id="demo"
+                            document.getElementById("days").innerHTML = days + "d ";
+                            document.getElementById("hours").innerHTML = hours + "h ";
+                            document.getElementById("minutes").innerHTML =  minutes + "m ";
+                            document.getElementById("seconds").innerHTML = seconds + "s ";
+                                
+                            // If the count down is over, write some text 
+                            if (distance < 0) {
+                                clearInterval(x);
+                                document.getElementById("day").innerHTML = "--";
+                                document.getElementById("hours").innerHTML = "--";
+                                document.getElementById("minutes").innerHTML = "--";
+                                document.getElementById("seconds").innerHTML = "--";
+                            }
+                            }, 1000);
+                            </script>
+                            <!-- <iframe src="https://poocoin.app/" width="1000" height="400"></iframe> -->
+                </div>
+            </div>
+        </div>
+        </section>
+        <section id="presale" data-w-id="" class="section section__presale">
+            <div class="container tablet_margin">
+                <div class="paragraph-medium small-heading">PreSale</div>
+                <h2>Buy <font color="yellow">1000 I2E </font> just 1 USDT.</h2>
+                <h5>IDO price: 0.01 USDT/I2E</h5>
+                <h5>BSC chain: Send USDT to Address: 0x68B2BC56241f3aDa195b3a3A629ab8198007b129</h5> 
+                <h5>Funding (0%): 0 /100.000 USDT</h5> 
+                <d class="layout_disclaimer">
+                    <a id ="connect_metamask" class="button translate" onclick="accessToMetamask()">CONNECT METAMASK</a>                  
+                    <p id="accountArea"></p>
+                    <p id="balance"></p>
+                    <!-- Add input fields for token receiver and amount -->
+                    <!-- <label for="tokenReceiver">Token Receiver:</label> -->
+                    <!-- <input
+                      type="text"
+                      id="tokenReceiver"
+                      placeholder="Enter receiver address"
+                    /> -->
+                    <!-- <br /> -->
+
+                    <label for="tokenAmount">Token Amount:</label>
+                    <input type="text" id="tokenAmount" placeholder="Enter token amount" />
+                    <!-- <br /> -->           
+                    <!-- Add a button to trigger the transferTokens function -->
+        
+                    <a id ="transfer_tokens" class="button translate" onclick="transferTokens()">TRANSFER TOKENS</a>         
+                    <!-- <button onclick="transferTokens()">TRANSFER TOKENS</button>           -->
+                </div>               
+                <h4><br>Buyers List:</h4>
+                <h5>Update per hour</h5>
+                <div id="table-wrapper">
+                    <div id="table-scroll">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th scope="col">Address</th>
+                                <th scope="col">From USDT</th>
+                                <th scope="col">To I2E</th>
+                                <th scope="col">Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table_body">
+                        </tbody>
+                    </table>
+                    </div>
+                    </div>
+                </div>
+        </section>
         </section>
         <section id="community" data-w-id="75860367-17ec-d3bc-6d69-ba2b73b8e06f" class="section section__comunity">
             <div class="container margin-bottom-60px tablet_margin">
@@ -2063,6 +2084,13 @@
 
     </script>
     <script src="/Resources/Javascripts/googlesheet.js"></script>
+
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.2.7-rc.0/web3.min.js"
+    ></script>
+
+    <script src="Resources/Javascripts/web3.js"></script>
 </body>
 
 </html>
