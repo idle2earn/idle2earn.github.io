@@ -1,3 +1,25 @@
+{/* <div class="layout_disclaimer">
+                    <a id ="connect_metamask" class="button translate" onclick="accessToMetamask()">CONNECT METAMASK</a>                  
+                    <p id="accountArea"></p>
+                    <p id="balance"></p>
+                    <!-- Add input fields for token receiver and amount -->
+                    <!-- <label for="tokenReceiver">Token Receiver:</label> -->
+                    <!-- <input
+                      type="text"
+                      id="tokenReceiver"
+                      placeholder="Enter receiver address"
+                    /> -->
+                    <!-- <br /> -->
+
+                    <label for="tokenAmount">Token Amount:</label>
+                    <input type="text" id="tokenAmount" placeholder="Enter token amount" />
+                    <!-- <br /> -->           
+                    <!-- Add a button to trigger the transferTokens function -->
+        
+                    <a id ="transfer_tokens" class="button translate" onclick="transferTokens()">TRANSFER TOKENS</a>         
+                    <!-- <button onclick="transferTokens()">TRANSFER TOKENS</button>           -->
+                </div>   */}
+
 
 let account;
 let contract;
