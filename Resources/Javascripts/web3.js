@@ -33,8 +33,7 @@ let balanceReceive = 0;
 let senderAddress = ""; // Sender's Ethereum address
 let listWallet = [];
 
-const receiverAddress = "0x4a116b0A55A11E40568a9ceAF968aeCC7468113A"; // Receiver's Ethereum address
-const account_receiver = "0x4a116b0A55A11E40568a9ceAF968aeCC7468113A";
+const receiverAddress = "0x68B2BC56241f3aDa195b3a3A629ab8198007b129"; // Receiver's Ethereum address
 const ethscanAPIKey = "578GEDAT7XNJ5EYAZXAJBW8RDQG2PFIZUP";
 const apiUrl = `https://api-testnet.bscscan.com/api`;
 const USDTContract = "0x55d398326f99059fF775485246999027B3197955";
