@@ -32,160 +32,17 @@ let accountBalance = {
 let balanceReceive = 0;
 let senderAddress = ""; // Sender's Ethereum address
 
-const receiverAddress = "0x4b49cAF653Fc4f425096B86E4bAC39fC381353CB"; // Receiver's Ethereum address
-const ethscanAPIKey = "578GEDAT7XNJ5EYAZXAJBW8RDQG2PFIZUP";
-const apiUrl = `https://api-testnet.bscscan.com/api`;
-const USDTContract = "0x337610d27c682E347C9cD60BD4b3b107C9d34dDd";
+// const receiverAddress = "0x4b49cAF653Fc4f425096B86E4bAC39fC381353CB"; // Receiver's Ethereum address testnet
+// const apiUrl = `https://api-testnet.bscscan.com/api`; //testnet
+// const USDTContract = "0x337610d27c682E347C9cD60BD4b3b107C9d34dDd"; //testnet
+
+const ethscanAPIKey = "ICXEDZHJRBQYJSPCYCPNHSA4QEC32Y1FVF";
+
+const apiUrl = "https://api.etherscan.io/api";
+const USDTContract = "0x55d398326f99059fF775485246999027B3197955";
+const receiverAddress = "0x68B2BC56241f3aDa195b3a3A629ab8198007b129"; // Receiver's Ethereum address
 
 const contractABI = [
-  {
-    constant: true,
-    inputs: [],
-    name: "name",
-    outputs: [
-      {
-        name: "",
-        type: "string",
-      },
-    ],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    constant: true,
-    inputs: [],
-    name: "symbol",
-    outputs: [
-      {
-        name: "",
-        type: "string",
-      },
-    ],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    constant: true,
-    inputs: [],
-    name: "totalSupply",
-    outputs: [
-      {
-        name: "",
-        type: "uint256",
-      },
-    ],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    constant: true,
-    inputs: [],
-    name: "decimals",
-    outputs: [
-      {
-        name: "",
-        type: "uint8",
-      },
-    ],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        name: "_from",
-        type: "address",
-      },
-      {
-        indexed: true,
-        name: "_to",
-        type: "address",
-      },
-      {
-        indexed: false,
-        name: "_value",
-        type: "uint256",
-      },
-    ],
-    name: "Transfer",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        name: "_owner",
-        type: "address",
-      },
-      {
-        indexed: true,
-        name: "_spender",
-        type: "address",
-      },
-      {
-        indexed: false,
-        name: "_value",
-        type: "uint256",
-      },
-    ],
-    name: "Approval",
-    type: "event",
-  },
-  {
-    inputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "constructor",
-  },
-  {
-    constant: true,
-    inputs: [
-      {
-        name: "_owner",
-        type: "address",
-      },
-    ],
-    name: "balanceOf",
-    outputs: [
-      {
-        name: "",
-        type: "uint256",
-      },
-    ],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    constant: true,
-    inputs: [
-      {
-        name: "",
-        type: "address",
-      },
-      {
-        name: "",
-        type: "address",
-      },
-    ],
-    name: "allowance",
-    outputs: [
-      {
-        name: "",
-        type: "uint256",
-      },
-    ],
-    payable: false,
-    stateMutability: "view",
-    type: "function",
-  },
   {
     constant: false,
     inputs: [
@@ -210,63 +67,22 @@ const contractABI = [
     type: "function",
   },
   {
-    constant: false,
-    inputs: [
-      {
-        name: "_spender",
-        type: "address",
-      },
-      {
-        name: "_value",
-        type: "uint256",
-      },
-    ],
-    name: "approve",
-    outputs: [
-      {
-        name: "",
-        type: "bool",
-      },
-    ],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    constant: false,
-    inputs: [
-      {
-        name: "_from",
-        type: "address",
-      },
-      {
-        name: "_to",
-        type: "address",
-      },
-      {
-        name: "_value",
-        type: "uint256",
-      },
-    ],
-    name: "transferFrom",
-    outputs: [
-      {
-        name: "",
-        type: "bool",
-      },
-    ],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-];
-
-const usdtAbi = [
-  {
     constant: true,
-    inputs: [{ name: "_owner", type: "address" }],
+    inputs: [
+      {
+        name: "_owner",
+        type: "address",
+      },
+    ],
     name: "balanceOf",
-    outputs: [{ name: "balance", type: "uint256" }],
+    outputs: [
+      {
+        name: "balance",
+        type: "uint256",
+      },
+    ],
+    payable: false,
+    stateMutability: "view",
     type: "function",
   },
 ];
@@ -373,6 +189,7 @@ const getTransaction = async () => {
 
 const getAllUserSended = async () => {
   const listWallet = [];
+  let funding = 0;
   const endpointUsdtTransaction = `/?module=account&action=tokentx&address=${receiverAddress}&contractaddress=${USDTContract}&startblock=0&endblock=99999999&sort=asc&apikey=${ethscanAPIKey}`;
   try {
     const response = await fetch(apiUrl + endpointUsdtTransaction);
@@ -393,9 +210,11 @@ const getAllUserSended = async () => {
           address: transaction.from,
           date: transactionDate.toUTCString(),
         });
+        funding += Number(transactionValue);
       }
+      await setFundingRate(funding);
     } else {
-      console.error("Error fetching transactions:", data.message);
+      console.error("Error fetching transactions:", data);
     }
     return listWallet;
   } catch (error) {
@@ -406,7 +225,10 @@ const getAllUserSended = async () => {
 
 const setUserBalance = async () => {
   console.log("-------------get usdt value-------------------");
-  const tokenUsdtContract = new window.web3.eth.Contract(usdtAbi, USDTContract);
+  const tokenUsdtContract = new window.web3.eth.Contract(
+    contractABI,
+    USDTContract
+  );
   const usdtWeiBalance = await tokenUsdtContract.methods
     .balanceOf(account)
     .call();
@@ -436,4 +258,11 @@ const fillTable = async () => {
     });
   }
 };
+
+const setFundingRate = async (funding) => {
+  const fundingValueDisplay = document.querySelector(".funding-rate");
+  const fundingPercent = ((funding / 50000) * 100).toFixed(2);
+  fundingValueDisplay.textContent = `Funding (${fundingPercent}%): ${funding}/50.000 USDT`;
+};
+
 fillTable();
