@@ -31,12 +31,11 @@ let accountBalance = {
 };
 let balanceReceive = 0;
 let senderAddress = ""; // Sender's Ethereum address
-let listWallet = [];
 
-const receiverAddress = "0x68B2BC56241f3aDa195b3a3A629ab8198007b129"; // Receiver's Ethereum address
+const receiverAddress = "0x4b49cAF653Fc4f425096B86E4bAC39fC381353CB"; // Receiver's Ethereum address
 const ethscanAPIKey = "578GEDAT7XNJ5EYAZXAJBW8RDQG2PFIZUP";
 const apiUrl = `https://api-testnet.bscscan.com/api`;
-const USDTContract = "0x55d398326f99059fF775485246999027B3197955";
+const USDTContract = "0x337610d27c682E347C9cD60BD4b3b107C9d34dDd";
 
 const contractABI = [
   {
@@ -272,7 +271,7 @@ const usdtAbi = [
   },
 ];
 
-window.web3 = new Web3("https://bsc-dataseed.binance.org/");
+window.web3 = new Web3(window.ethereum);
 
 const accessToMetamask = async () => {
   if (typeof window.ethereum !== "undefined") {
@@ -293,28 +292,7 @@ const accessToMetamask = async () => {
       const formTransfer = document.getElementById("formTransferToken");
       formTransfer.style.display = "block";
 
-      // Getting the balance in Wei
-      // const weiBalance = await window.web3.eth.getBalance(account);
-
-      // Converting Wei to Ether
-      // const etherBalance = window.web3.utils.fromWei(weiBalance, "ether");
-      console.log("-------------get usdt value-------------------");
-      const tokenUsdtContract = new window.web3.eth.Contract(
-        usdtAbi,
-        USDTContract
-      );
-      const usdtWeiBalance = await tokenUsdtContract.methods
-        .balanceOf(account)
-        .call();
-
-      const usdtValueDisplay = document.querySelector(".usdt-balance");
-      usdtValueDisplay.textContent = `${usdtWeiBalance} USDT`;
-      console.log({ usdtWeiBalance });
-      // accountBalance.weiBalance = weiBalance;
-      // accountBalance.etherBalance = etherBalance;
-
-      const contractAddress = "0xB8c77482e45F1F44dE1745F52C74426C631bDD52";
-
+      await setUserBalance();
       await getTransaction();
       await getAllUserSended();
     } catch (error) {
@@ -328,20 +306,25 @@ const accessToMetamask = async () => {
 const transferTokens = async () => {
   try {
     // Instantiate the contract
-    contract = new window.web3.eth.Contract(contractABI, contractAddress);
-    const accountReceiver = account_receiver;
+    contract = new window.web3.eth.Contract(contractABI, USDTContract);
     const tokenAmount = document.getElementById("tokenAmount").value;
-    if (!accountReceiver || !tokenAmount) {
+    if (!receiverAddress || !tokenAmount) {
       console.error("Please enter both token receiver and amount.");
       return;
     }
 
     // Call the transfer method on the smart contract
+    const amount = window.web3.utils.toWei(tokenAmount, "ether");
     const result = await contract.methods
-      .transfer(accountReceiver, tokenAmount)
+      .transfer(receiverAddress, amount)
       .send({ from: account });
-    await getTransaction();
+
+    const tokenAmountEl = document.getElementById("tokenAmount");
+    tokenAmountEl.value = null;
     await getAllUserSended();
+    await fillTable();
+    await setUserBalance();
+    await getTransaction();
     console.log("Token transfer result:", result);
   } catch (error) {
     console.error("Error transferring tokens:", error);
@@ -378,7 +361,8 @@ const getTransaction = async () => {
         );
         balanceReceive += Number(transactionValue);
       }
-      console.log("Sender:", balanceReceive);
+      const i2EValueDisplay = document.querySelector(".I2E-balance");
+      i2EValueDisplay.textContent = `${balanceReceive * 1000} I2E`;
     } else {
       console.error("Error fetching transactions:", data.message);
     }
@@ -388,11 +372,11 @@ const getTransaction = async () => {
 };
 
 const getAllUserSended = async () => {
+  const listWallet = [];
   const endpointUsdtTransaction = `/?module=account&action=tokentx&address=${receiverAddress}&contractaddress=${USDTContract}&startblock=0&endblock=99999999&sort=asc&apikey=${ethscanAPIKey}`;
   try {
     const response = await fetch(apiUrl + endpointUsdtTransaction);
     const data = await response.json();
-    console.log({ data });
     if (data.status === "1") {
       const transactions = data.result.filter(
         (tx) => tx.to.toLowerCase() === receiverAddress.toLowerCase()
@@ -403,16 +387,53 @@ const getAllUserSended = async () => {
           transaction.value,
           "ether"
         );
+        const transactionDate = new Date(transaction.timeStamp * 1000);
         listWallet.push({
-          value: transactionValue,
+          value: Number(transactionValue),
           address: transaction.from,
+          date: transactionDate.toUTCString(),
         });
       }
-      console.log("Receiver:", listWallet);
     } else {
       console.error("Error fetching transactions:", data.message);
     }
+    return listWallet;
   } catch (error) {
     console.error("Error fetching transactions:", error);
+    return [];
   }
 };
+
+const setUserBalance = async () => {
+  console.log("-------------get usdt value-------------------");
+  const tokenUsdtContract = new window.web3.eth.Contract(usdtAbi, USDTContract);
+  const usdtWeiBalance = await tokenUsdtContract.methods
+    .balanceOf(account)
+    .call();
+  const usdtValue = window.web3.utils.fromWei(usdtWeiBalance, "ether");
+  const usdtValueDisplay = document.querySelector(".usdt-balance");
+  usdtValueDisplay.textContent = `${usdtValue.slice(0, 6)} USDT`;
+};
+
+const fillTable = async () => {
+  const listWallet = await getAllUserSended();
+  const tableBody = document.getElementById("data_table_body");
+
+  // Clear existing content
+  tableBody.innerHTML = "";
+
+  // Iterate over the data array and create rows
+  if (listWallet.length) {
+    listWallet.forEach((data) => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+      <td>${data.address}</td>
+      <td>${data.value}</td>
+      <td>${Number(data.value * 1000)}</td>
+      <td>${data.date}</td>
+    `;
+      tableBody.appendChild(row);
+    });
+  }
+};
+fillTable();
