@@ -261,8 +261,8 @@ const fillTable = async () => {
 
 const setFundingRate = async (funding) => {
   const fundingValueDisplay = document.querySelector(".funding-rate");
-  const fundingPercent = ((funding / 100000) * 100).toFixed(2);
-  fundingValueDisplay.textContent = `Funding (${fundingPercent}%): ${funding}/100.000 USDT`;
+  const fundingPercent = ((funding / 50000) * 100).toFixed(2);
+  fundingValueDisplay.textContent = `Funding (${fundingPercent}%): ${funding}/50.000 USDT`;
 };
 
 fillTable();
