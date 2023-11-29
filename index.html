@@ -658,9 +658,9 @@
                     <a href="#presale" class="nav_link">PreSale</a>
                     <a href="#community"class="nav_link">Community</a> 
                     <a href="#timeline" class="nav_link">Roadmap</a>
-                    <button class="button-login" onclick="accessToMetamask()" id="loginButton">Login Wallet</button>
+                    <!-- <button class="button-login" onclick="accessToMetamask()" id="loginButton">Login Wallet</button>
                     <span  class="usdt-balance" id="usdtBalance"></span>
-                    <span  class="I2E-balance" id="i2EBalance"></span>
+                    <span  class="I2E-balance" id="i2EBalance"></span> -->
                 </div>
             </nav>
             <div id="modeSwitch" data-w-id="92731744-d49d-1f0d-34a0-44a95843899d" class="switch"
@@ -1116,13 +1116,19 @@
         </section>
         <section id="presale" data-w-id="" class="section section__presale">
             <div class="container tablet_margin">
-               
                 <div class="paragraph-medium small-heading">PreSale</div>
                 <h2>Buy <font color="yellow">1000 I2E </font> just 1 USDT.</h2>
                 <h5>BSC chain: Send USDT to Address: 0x68B2BC56241f3aDa195b3a3A629ab8198007b129</h5> 
                 <h5>Funding (0%): 0 /100.000 USDT</h5> 
+
+                <div class='login-container' id="loginContainer">
+                    <button class="button-login" onclick="accessToMetamask()" id="loginButton">CONNECT WALLET</button>
+                    <span  class="usdt-balance" id="usdtBalance"></span>
+                    <span  class="I2E-balance" id="i2EBalance"></span>
+                </div>
                 <div class='form-buy-token-container' id="formTransferToken">
                     <div class="paragraph-medium small-heading">Buy Token</div>
+                      <span></span>
                       <div class='form-input'>
                         <!-- Add input fields for token receiver and amount -->
                         <!-- <label class='receiver-address-label' for="tokenReceiver">Token Receiver:</label>
@@ -1134,7 +1140,7 @@
                         />
                         <br /> -->
                         <label class='amount-label' for="tokenAmount">Token Amount:</label>
-                        <input class='amount-input' type="text" id="tokenAmount" placeholder="Enter token amount" />
+                        <input class='amount-input' type="text" id="tokenAmount" placeholder="Enter usdt amount" />
                         <br />
 
                         <!-- Add a button to trigger the transferTokens function -->
@@ -1155,13 +1161,13 @@
                                     <th scope="col">Date</th>
                                 </tr>
                             </thead>
-                            <tbody id="table_body">
+                            <tbody id="data_table_body">
                             </tbody>
                         </table>
                         </div>
                         </div>
                     </div>
-                </div>
+            </div>
         </section>
         </section>
         <section id="community" data-w-id="75860367-17ec-d3bc-6d69-ba2b73b8e06f" class="section section__comunity">
