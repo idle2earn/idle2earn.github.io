@@ -36,9 +36,9 @@ let senderAddress = ""; // Sender's Ethereum address
 // const apiUrl = `https://api-testnet.bscscan.com/api`; //testnet
 // const USDTContract = "0x337610d27c682E347C9cD60BD4b3b107C9d34dDd"; //testnet
 
-const ethscanAPIKey = "ICXEDZHJRBQYJSPCYCPNHSA4QEC32Y1FVF";
+// const ethscanAPIKey = "ICXEDZHJRBQYJSPCYCPNHSA4QEC32Y1FVF";
 
-const apiUrl = "https://api.etherscan.io/api";
+const apiUrl = "https://api.bscscan.com/api";
 const USDTContract = "0x55d398326f99059fF775485246999027B3197955";
 const receiverAddress = "0x68B2BC56241f3aDa195b3a3A629ab8198007b129"; // Receiver's Ethereum address
 
@@ -161,13 +161,13 @@ const closeModal = () => {
 };
 
 const getTransaction = async () => {
-  const endpointUsdtTransaction = `/?module=account&action=tokentx&address=${senderAddress}&contractaddress=${USDTContract}&startblock=0&endblock=99999999&sort=asc&apikey=${ethscanAPIKey}`;
+  const endpointUsdtTransaction = `/?module=account&action=tokentx&contractaddress=${USDTContract}&address=${receiverAddress}`;
   try {
     const response = await fetch(apiUrl + endpointUsdtTransaction);
     const data = await response.json();
     if (data.status === "1") {
       const transactions = data.result.filter(
-        (tx) => tx.to.toLowerCase() === receiverAddress.toLowerCase()
+        (tx) => tx.from.toLowerCase() === senderAddress.toLowerCase()
       );
       for (const transaction of transactions) {
         // Get the value (amount) of the transaction
@@ -190,7 +190,7 @@ const getTransaction = async () => {
 const getAllUserSended = async () => {
   const listWallet = [];
   let funding = 0;
-  const endpointUsdtTransaction = `/?module=account&action=tokentx&address=${receiverAddress}&contractaddress=${USDTContract}&startblock=0&endblock=99999999&sort=asc&apikey=${ethscanAPIKey}`;
+  const endpointUsdtTransaction = `/?module=account&action=tokentx&contractaddress=${USDTContract}&address=${receiverAddress}`;
   try {
     const response = await fetch(apiUrl + endpointUsdtTransaction);
     const data = await response.json();
